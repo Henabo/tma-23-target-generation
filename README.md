@@ -1,10 +1,12 @@
 # TMA'23 Paper Data
 
 This repository provides instructions and data which can be used to reproduce the results presented in our paper `Target Acquired? Evaluating Target Generation Algorithms for IPv6`.
+该存储库提供的指令和数据可用于重现我们的论文“Target Acquired?”评估IPv6目标生成算法。
 
 ## Requirements
 
 In order to run the included Python scripts, please install the requirements with `pip3 install -r requirements.txt`
+为了运行包含的Python脚本，请使用' pip3 install -r requirements.txt '安装需求
 
 ## Target Generation
 
@@ -12,27 +14,48 @@ In order to run the included Python scripts, please install the requirements wit
 
 In order to run the algorithms, we provide a runner script, which you can use in the following way:
 
+为了运行算法，我们提供了一个运行器脚本，您可以通过以下方式使用:
+
 - Prerequisites are a debian-based system with CUDA drivers installed
+
+安装了CUDA驱动的debian系统
+
 - Run `./run.sh SETUP` to install all necessary packages. A new directory called `generation-$datetime` will have been created
+
+—执行“。/ Run .sh SETUP”，安装所有需要的软件包。将创建一个名为“generation-$datetime”的新目录
+
 - Run `./run.sh DOWNLOAD $newdir` to download the current hitlist as seed data.
+
+—执行“。/ Run .sh DOWNLOAD $newdir”，下载当前热门列表作为种子数据。
+
 - Run `./run.sh CATEGORIZE $newdir` to create one new directory per category with holds categorized seeds.
+
+运行' ./ Run .sh CATEGORIZE $newdir '为每个类别创建一个新目录，其中包含已分类的种子。
+
 - Run `./run.sh ALL` and specify the directory which you want to use as seeds (`$newdir` for full hitlist input for example). You can also switch out `ALL` to whichever algorith you want to run specifically.
+
+运行' ./ Run .sh ALL '并指定你想要用作种子的目录(例如，' $newdir '用于完整的hitlist输入)。您还可以将' ALL '切换为您想要具体运行的任何算法。
 
 ### Results
 
 In order to reproduce our results regarding the Target Generation Algorithms (TGAs) analyzed in our paper, we provide the following data:
+为了重现我们在论文中分析的目标生成算法(TGAs)的结果，我们提供了以下数据:
 
 - `generation_*`: results of running the TGAs with categorized input:
     - `results`: resulting candidate sets per TGA
     - `seeds`: seed dataset used for the generation run
-- `scan*`: scan results collected when scanning the combined candidate sets of the algorithms
-    - `*.iponly`: filtered input files for the scan
-    - `*.csv.*`: results specific to a protocol (or combined, in the case of `*.csv.total`)
+- `scan*`: scan results collected when scanning the combined candidate sets of the algorithms. 扫描算法组合候选集时收集的扫描结果
+    - `*.iponly`: filtered input files for the scan, 过滤输入文件进行扫描
+    - `*.csv.*`: results specific to a protocol (or combined, in the case of `*.csv.total`)特定于协议的结果(或组合，在' *.csv.total '的情况下)
 
 First steps to analyze the results:
+分析结果的第一步:
 
 - combine the data of both scans by running `./combine.sh` in the scan directory.
 - run the scan analysis script by running
+
+—在扫描目录下执行。/combine.sh命令，合并两次扫描的数据。
+—执行命令运行扫描分析脚本
 
 ```
 python3 analyze_scan.py
@@ -45,6 +68,9 @@ python3 analyze_scan.py
 
 The number of used worker threads as well as the tmp directory can be adapated.
 After this, the jupyter notebook `visualizations.ipynb` can be executed according to the instructions in the notebook.
+使用的工作线程的数量以及tmp目录都可以调整。
+在这之后，木星笔记本的可视化。Ipynb '可以按照笔记本上的说明执行。
+
 
 ## Historic Hitlist statistics
 
